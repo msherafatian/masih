@@ -1,0 +1,115 @@
+/* Custom CSS for MASIH App */
+  
+  /* Dashboard header */
+  .skin-blue .main-header .logo {
+    background-color: #2c3e50;
+      font-weight: bold;
+  }
+
+.skin-blue .main-header .navbar {
+  background-color: #34495e;
+}
+
+/* Sidebar */
+  .skin-blue .main-sidebar {
+    background-color: #2c3e50;
+  }
+
+.skin-blue .sidebar-menu > li.active > a {
+  border-left-color: #3498db;
+}
+
+/* Boxes */
+  .box {
+    border-top-width: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  }
+
+.box:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+/* Progress bars */
+  .progress-bar {
+    background-color: #3498db;
+  }
+
+/* Buttons */
+  .btn-success {
+    background-color: #27ae60;
+      border-color: #27ae60;
+  }
+
+.btn-success:hover {
+  background-color: #229954;
+    border-color: #229954;
+}
+
+.btn-info {
+  background-color: #3498db;
+    border-color: #3498db;
+}
+
+.btn-warning {
+  background-color: #f39c12;
+    border-color: #f39c12;
+}
+
+/* Data tables */
+  .dataTables_wrapper .dataTables_filter input {
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 5px;
+  }
+
+/* Plotly plots */
+  .plotly .modebar {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+  }
+
+/* Tab panels */
+  .nav-tabs-custom > .nav-tabs > li.active {
+    border-top-color: #3498db;
+  }
+
+/* Notifications */
+  .shiny-notification {
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+
+/* Loading spinner */
+  .shiny-busy-indicator {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -33px;
+    margin-left: -33px;
+    z-index: 1000;
+  }
+
+/* Custom classes for specific elements */
+  .trajectory-tip {
+    background-color: #ecf0f1;
+      padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+  }
+
+.export-note {
+  color: #7f8c8d;
+    font-style: italic;
+  font-size: 0.9em;
+}
+
+/* Responsive adjustments */
+  @media (max-width: 767px) {
+    .content-wrapper, .right-side {
+      margin-left: 0 !important;
+    }
+    
+    .main-sidebar {
+      transform: translate(-230px, 0);
+    }
+  }

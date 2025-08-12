@@ -1,0 +1,103 @@
+url: https://msherafatian.github.io/masih/
+template:
+  bootstrap: 5
+  theme: flatly
+  bslib:
+    primary: "#007bff"
+    secondary: "#6c757d"
+
+home:
+  title: "MASIH: Modular Analysis Shiny Interface for Heterogeneity"
+  description: >
+    An interactive R Shiny application for comprehensive single-cell RNA 
+    sequencing analysis in cancer research.
+
+navbar:
+  title: "MASIH"
+  left:
+    - icon: fa-home
+      href: index.html
+    - text: "Get Started"
+      href: articles/getting-started.html
+    - text: "Tutorials"
+      menu:
+        - text: "Basic Analysis"
+          href: articles/basic-analysis.html
+        - text: "Advanced Trajectory Analysis"
+          href: articles/advanced-trajectory.html
+        - text: "Comparative Pathway Analysis"
+          href: articles/comparative-pathways.html
+    - text: "Reference"
+      href: reference/index.html
+    - text: "News"
+      href: news/index.html
+  right:
+    - icon: fa-github
+      href: https://github.com/msherafatian/masih
+    - icon: fa-bug
+      href: https://github.com/msherafatian/masih/issues
+
+articles:
+  - title: "Getting Started"
+    desc: "Learn the basics of MASIH"
+    contents:
+    - getting-started
+    - data-preparation
+    - troubleshooting
+
+  - title: "Tutorials"
+    desc: "Step-by-step analysis guides"
+    contents:
+    - basic-analysis
+    - advanced-trajectory
+    - comparative-pathways
+
+  - title: "Developer Guides"
+    desc: "Contributing to MASIH"
+    contents:
+    - contributing
+    - architecture
+
+reference:
+  - title: "Main Functions"
+    desc: "Core MASIH functions"
+    contents:
+    - run_app
+    - load_example_data
+
+  - title: "Analysis Functions"
+    desc: "Single-cell analysis functions"
+    contents:
+    - starts_with("analyze_")
+    - starts_with("calculate_")
+
+  - title: "Plotting Functions"
+    desc: "Visualization functions"
+    contents:
+    - starts_with("plot_")
+    - starts_with("create_")
+
+  - title: "Utility Functions"
+    desc: "Helper and utility functions"
+    contents:
+    - starts_with("utils_")
+    - starts_with("validate_")
+
+  - title: "Data"
+    desc: "Example datasets"
+    contents:
+    - starts_with("example_")
+
+footer:
+  structure:
+    left: [developed_by, built_with]
+    right: [package]
+  components:
+    developed_by: |
+      Developed by <a href='https://github.com/msherafatian'>Masih Sherafatian</a>.
+    built_with: |
+      Built with <a href='https://pkgdown.r-lib.org/'>pkgdown</a>.
+    package: |
+      <a href='https://github.com/yourusername/masih'>
+      <img src='https://img.shields.io/github/stars/yourusername/masih?style=social' alt='GitHub Stars'>
+      </a>
