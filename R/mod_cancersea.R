@@ -101,28 +101,29 @@ mod_cancersea_server <- function(id, seurat_obj, processed, main_values){
     
     # Load CancerSEA pathways when module initializes
     observe({
-      # Define common CancerSEA pathways
+      # Use the CORRECT pathway names from cancersea
       pathway_choices <- c(
-        "Angiogenesis" = "Angiogenesis",
-        "Apoptosis" = "Apoptosis", 
-        "Cell Cycle" = "Cell.Cycle",
-        "Differentiation" = "Differentiation",
-        "DNA Damage" = "DNA.Damage",
-        "EMT" = "EMT",
-        "Hypoxia" = "Hypoxia",
-        "Inflammation" = "Inflammation",
-        "Invasion" = "Invasion",
-        "Metastasis" = "Metastasis",
-        "Proliferation" = "Proliferation",
-        "Quiescence" = "Quiescence",
-        "Stemness" = "Stemness"
+        "Angiogenesis" = "angiogenesis",
+        "Apoptosis" = "apoptosis", 
+        "Cell Cycle" = "cell_cycle",
+        "Differentiation" = "differentiation",
+        "DNA Damage" = "dna_damage",
+        "DNA Repair" = "dna_repair",
+        "EMT" = "emt",
+        "Hypoxia" = "hypoxia",
+        "Inflammation" = "inflammation",
+        "Invasion" = "invasion",
+        "Metastasis" = "metastasis",
+        "Proliferation" = "proliferation",
+        "Quiescence" = "quiescence",
+        "Stemness" = "stemness"
       )
       
       updateSelectInput(session, "cancersea_pathway", 
                         choices = pathway_choices)
     })
     
-    # Calculate CancerSEA pathway - UPDATED VERSION
+    # Calculate CancerSEA pathway - FIXED VERSION
     observeEvent(input$calculate_pathway, {
       req(processed())
       req(seurat_obj())
@@ -141,31 +142,27 @@ mod_cancersea_server <- function(id, seurat_obj, processed, main_values){
                        return()
                      }
                      
+                     # Load pathway data globally - QUICK FIX
+                     data(list = input$cancersea_pathway, package = "cancersea", envir = .GlobalEnv)
+                     
                      # Prepare the assay for better scoring
                      temp_obj <- check_and_prepare_assay(seurat_obj())
                      
                      all_genes <- rownames(temp_obj)
                      
-                     # Get pathway genes with error handling
-                     gene_list <- tryCatch({
-                       # Try to get the pathway data from cancersea
-                       pathway_env <- asNamespace("cancersea")
-                       if (exists(input$cancersea_pathway, envir = pathway_env)) {
-                         pathway_data <- get(input$cancersea_pathway, envir = pathway_env)
-                         if (is.list(pathway_data) && "symbol" %in% names(pathway_data)) {
-                           pathway_data$symbol
-                         } else {
-                           NULL
-                         }
+                     # Simple gene list access like in your original working app
+                     gene_list <- if (exists(input$cancersea_pathway, envir = .GlobalEnv)) {
+                       pathway_data <- get(input$cancersea_pathway, envir = .GlobalEnv)
+                       if (is.list(pathway_data) && "symbol" %in% names(pathway_data)) {
+                         pathway_data$symbol
                        } else {
-                         NULL
+                         character()
                        }
-                     }, error = function(e) {
-                       message("Error accessing pathway data: ", e$message)
-                       NULL
-                     })
+                     } else {
+                       character()
+                     }
                      
-                     if (is.null(gene_list) || length(gene_list) == 0) {
+                     if (length(gene_list) == 0) {
                        showNotification(
                          paste("Could not find genes for pathway:", input$cancersea_pathway),
                          type = "error",
@@ -179,12 +176,13 @@ mod_cancersea_server <- function(id, seurat_obj, processed, main_values){
                      if (length(gene_list_filtered) > 0) {
                        
                        tryCatch({
-                         # Use the exact same parameters as your working old app
+                         # Use parameters like your working original app but with nbin fix
                          main_values$seurat_obj <- AddModuleScore(
                            object = temp_obj,
                            features = list(gene_list_filtered),
                            name = paste0(input$cancersea_pathway, "_"),
-                           ctrl = 20
+                           ctrl = 20,
+                           nbin = 1  # Fixed the "Insufficient data" error
                          )
                          
                          # Store the score column name
@@ -208,7 +206,7 @@ mod_cancersea_server <- function(id, seurat_obj, processed, main_values){
                                features = list(gene_list_filtered),
                                name = paste0(input$cancersea_pathway, "_"),
                                ctrl = 5,
-                               nbin = 5
+                               nbin = 1  # Also fix here
                              )
                              
                              score_name <- paste0(input$cancersea_pathway, "_1")

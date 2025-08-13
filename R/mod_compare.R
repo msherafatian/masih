@@ -76,17 +76,68 @@ mod_compare_server <- function(id, seurat_obj, processed, cancersea_scores, main
   moduleServer( id, function(input, output, session){
     ns <- session$ns
     
-    # Update pathway choices
+    # Update pathway choices - CORRECTED VERSION
     observe({
-      data('available_pathways', package = 'cancersea')
+      # Use the same hardcoded pathways as in mod_cancersea for consistency
+      pathway_choices <- c(
+        "Angiogenesis" = "angiogenesis",
+        "Apoptosis" = "apoptosis", 
+        "Cell Cycle" = "cell_cycle",
+        "Differentiation" = "differentiation",
+        "DNA Damage" = "dna_damage",
+        "DNA Repair" = "dna_repair",
+        "EMT" = "emt",
+        "Hypoxia" = "hypoxia",
+        "Inflammation" = "inflammation",
+        "Invasion" = "invasion",
+        "Metastasis" = "metastasis",
+        "Proliferation" = "proliferation",
+        "Quiescence" = "quiescence",
+        "Stemness" = "stemness"
+      )
+      
       updateSelectizeInput(session, "compare_pathways", 
-                           choices = available_pathways)
+                           choices = pathway_choices)
     })
     
     # Local reactive values
     local_values <- reactiveValues(
       comparison_results = NULL
     )
+    
+    # Helper function to calculate pathway score (inline)
+    calculate_pathway_score_inline <- function(seurat_obj, pathway) {
+      tryCatch({
+        # Load pathway data
+        data(list = pathway, package = "cancersea", envir = .GlobalEnv)
+        
+        if (exists(pathway, envir = .GlobalEnv)) {
+          pathway_data <- get(pathway, envir = .GlobalEnv)
+          if (is.list(pathway_data) && "symbol" %in% names(pathway_data)) {
+            gene_list <- pathway_data$symbol
+            all_genes <- rownames(seurat_obj)
+            gene_list_filtered <- gene_list[gene_list %in% all_genes]
+            
+            if (length(gene_list_filtered) > 0) {
+              seurat_obj <- AddModuleScore(
+                object = seurat_obj,
+                features = list(gene_list_filtered),
+                name = paste0(pathway, "_"),
+                ctrl = 20,
+                nbin = 1
+              )
+              
+              score_name <- paste0(pathway, "_1")
+              return(list(seurat_obj = seurat_obj, score_name = score_name))
+            }
+          }
+        }
+        return(NULL)
+      }, error = function(e) {
+        message("Error calculating pathway score for ", pathway, ": ", e$message)
+        return(NULL)
+      })
+    }
     
     # Run pathway comparison
     observeEvent(input$run_comparison, {
@@ -106,7 +157,7 @@ mod_compare_server <- function(id, seurat_obj, processed, cancersea_scores, main
             
             incProgress(0.1, detail = paste("Calculating", pathway, "..."))
             
-            result <- calculate_pathway_score(seurat_obj(), pathway)
+            result <- calculate_pathway_score_inline(seurat_obj(), pathway)
             if (!is.null(result)) {
               main_values$seurat_obj <- result$seurat_obj
               main_values$cancersea_scores[[pathway]] <- result$score_name
@@ -222,24 +273,47 @@ mod_compare_server <- function(id, seurat_obj, processed, cancersea_scores, main
         theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
         scale_fill_brewer(palette = "Set2")
     })
+    
     # Output: Comparison heatmap
     output$comparisonHeatmap <- renderPlot({
       req(local_values$comparison_results)
       req(seurat_obj())
       req(length(local_values$comparison_results$scores) >= 2)
       
-      # Create matrix of average scores per cluster
-      score_matrix <- calculate_pathway_averages(
-        seurat_obj(), 
-        local_values$comparison_results$scores
-      )
+      # Create matrix of average scores per cluster - INLINE VERSION
+      clusters <- unique(Idents(seurat_obj()))
+      
+      # Initialize results data frame
+      score_matrix <- data.frame(Cluster = clusters)
+      
+      for(pathway_name in names(local_values$comparison_results$scores)) {
+        score_col <- local_values$comparison_results$scores[[pathway_name]]
+        
+        # Calculate average scores per cluster
+        avg_scores <- aggregate(
+          seurat_obj()@meta.data[[score_col]],
+          by = list(Idents(seurat_obj())),
+          FUN = mean,
+          na.rm = TRUE
+        )
+        
+        # Match with results data frame
+        score_matrix[[pathway_name]] <- avg_scores$x[match(score_matrix$Cluster, avg_scores$Group.1)]
+      }
       
       # Convert to matrix format
       score_mat <- as.matrix(score_matrix[, -1])
       rownames(score_mat) <- score_matrix$Cluster
       
-      # Scale and plot
-      create_heatmap(score_mat, scale = TRUE)
+      # Scale and plot - INLINE VERSION
+      score_mat_scaled <- t(scale(t(score_mat)))
+      score_mat_scaled[is.na(score_mat_scaled)] <- 0
+      
+      heatmap(score_mat_scaled, 
+              col = viridis::viridis(100),
+              scale = "none",
+              margins = c(10, 8),
+              main = "Pathway Comparison Heatmap")
     })
     
     # Output: Comparison statistics
