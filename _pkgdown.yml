@@ -1,12 +1,5 @@
 url: https://msherafatian.github.io/masih/
 
-template:
-  bootstrap: 5
-  theme: flatly
-  bslib:
-    primary: "#007bff"
-    secondary: "#6c757d"
-
 home:
   title: "MASIH: Modular Analysis Shiny Interface for Heterogeneity"
   description: >
@@ -25,10 +18,7 @@ navbar:
   right:
     - icon: fa-github
       href: https://github.com/msherafatian/masih
-    - icon: fa-bug
-      href: https://github.com/msherafatian/masih/issues
 
-# Only include functions that actually exist
 reference:
   - title: "Main Functions"
     desc: "Core MASIH functions"
@@ -37,14 +27,10 @@ reference:
 
 footer:
   structure:
-    left: [developed_by, built_with]
-    right: [package]
+    left: [developed_by]
+    right: [built_with]
   components:
     developed_by: |
-      Developed by <a href='https://github.com/msherafatian'>Masih Sherafatian</a>.
+      Developed by <a href='https://github.com/msherafatian'>Masih Sherafatian</a>
     built_with: |
-      Built with <a href='https://pkgdown.r-lib.org/'>pkgdown</a>.
-    package: |
-      <a href='https://github.com/msherafatian/masih'>
-      <img src='https://img.shields.io/github/stars/msherafatian/masih?style=social' alt='GitHub Stars'>
-      </a>
+      Built with <a href='https://pkgdown.r-lib.org/'>pkgdown</a>
