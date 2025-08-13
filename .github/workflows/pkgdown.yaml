@@ -1,10 +1,6 @@
 on:
   push:
     branches: [main, master]
-  pull_request:
-    branches: [main, master]
-  release:
-    types: [published]
   workflow_dispatch:
 
 name: pkgdown
@@ -30,17 +26,38 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+          sudo apt-get install -y \
+            libcurl4-openssl-dev \
+            libssl-dev \
+            libxml2-dev \
+            libfontconfig1-dev
+
+      - name: Install BiocManager first
+        run: |
+          install.packages("BiocManager")
+        shell: Rscript {0}
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::pkgdown, local::.
+          extra-packages: |
+            any::pkgdown
+            any::devtools
+            local::.
           needs: website
 
-      - name: Install BiocManager and Bioconductor packages
+      - name: Install Bioconductor packages
         run: |
-          install.packages("BiocManager")
           BiocManager::install(c("SingleCellExperiment", "slingshot"))
+        shell: Rscript {0}
+
+      - name: Install cancersea from GitHub (optional)
+        run: |
+          tryCatch({
+            devtools::install_github("Moonerss/cancersea", quiet = TRUE, force = TRUE)
+            message("cancersea installed successfully")
+          }, error = function(e) {
+            message("Could not install cancersea, but continuing anyway: ", e$message)
+          })
         shell: Rscript {0}
 
       - name: Build site
@@ -49,7 +66,6 @@ jobs:
         shell: Rscript {0}
 
       - name: Deploy to GitHub pages 🚀
-        if: github.event_name != 'pull_request'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
