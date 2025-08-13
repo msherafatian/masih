@@ -111,3 +111,6 @@ logs/
 *~
 *.bak
 *.backup
+
+# But allow the pkgdown config
+!_pkgdown.yml
