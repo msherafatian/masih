@@ -101,30 +101,25 @@ mod_cancersea_server <- function(id, seurat_obj, processed, main_values){
     
     # Load CancerSEA pathways when module initializes
     observe({
-      if (!requireNamespace("cancersea", quietly = TRUE)) {
-        showNotification("cancersea package required", type = "error")
-        return()
-      }
+      # Define common CancerSEA pathways
+      pathway_choices <- c(
+        "Angiogenesis" = "Angiogenesis",
+        "Apoptosis" = "Apoptosis", 
+        "Cell Cycle" = "Cell.Cycle",
+        "Differentiation" = "Differentiation",
+        "DNA Damage" = "DNA.Damage",
+        "EMT" = "EMT",
+        "Hypoxia" = "Hypoxia",
+        "Inflammation" = "Inflammation",
+        "Invasion" = "Invasion",
+        "Metastasis" = "Metastasis",
+        "Proliferation" = "Proliferation",
+        "Quiescence" = "Quiescence",
+        "Stemness" = "Stemness"
+      )
       
-      tryCatch({
-        # Try to load available_pathways data
-        data('available_pathways', package = 'cancersea')
-        if (exists("available_pathways")) {
-          updateSelectInput(session, "cancersea_pathway", 
-                            choices = available_pathways)
-        } else {
-          # Fallback: use common pathway names
-          pathway_choices <- c(
-            "Angiogenesis", "Apoptosis", "Cell.Cycle", "Differentiation",
-            "DNA.Damage", "EMT", "Hypoxia", "Inflammation", "Invasion",
-            "Metastasis", "Proliferation", "Quiescence", "Stemness"
-          )
-          updateSelectInput(session, "cancersea_pathway", 
-                            choices = pathway_choices)
-        }
-      }, error = function(e) {
-        showNotification(paste("Error loading pathways:", e$message), type = "warning")
-      })
+      updateSelectInput(session, "cancersea_pathway", 
+                        choices = pathway_choices)
     })
     
     # Calculate CancerSEA pathway - UPDATED VERSION
@@ -136,30 +131,60 @@ mod_cancersea_server <- function(id, seurat_obj, processed, main_values){
       withProgress(message = paste('Calculating', input$cancersea_pathway, 'score...'), 
                    value = 0.5, {
                      
-                     # ADDED: Prepare the assay for better scoring
+                     # Check if cancersea is available
+                     if (!requireNamespace("cancersea", quietly = TRUE)) {
+                       showNotification(
+                         "CancerSEA package not available. Please install it using: devtools::install_github('Moonerss/cancersea')",
+                         type = "error",
+                         duration = 10
+                       )
+                       return()
+                     }
+                     
+                     # Prepare the assay for better scoring
                      temp_obj <- check_and_prepare_assay(seurat_obj())
                      
                      all_genes <- rownames(temp_obj)
-                     #gene_list <- get(input$cancersea_pathway)$symbol
-                     if (!requireNamespace("cancersea", quietly = TRUE)) {
-                       showNotification("cancersea package required", type = "error")
+                     
+                     # Get pathway genes with error handling
+                     gene_list <- tryCatch({
+                       # Try to get the pathway data from cancersea
+                       pathway_env <- asNamespace("cancersea")
+                       if (exists(input$cancersea_pathway, envir = pathway_env)) {
+                         pathway_data <- get(input$cancersea_pathway, envir = pathway_env)
+                         if (is.list(pathway_data) && "symbol" %in% names(pathway_data)) {
+                           pathway_data$symbol
+                         } else {
+                           NULL
+                         }
+                       } else {
+                         NULL
+                       }
+                     }, error = function(e) {
+                       message("Error accessing pathway data: ", e$message)
+                       NULL
+                     })
+                     
+                     if (is.null(gene_list) || length(gene_list) == 0) {
+                       showNotification(
+                         paste("Could not find genes for pathway:", input$cancersea_pathway),
+                         type = "error",
+                         duration = 5
+                       )
                        return()
                      }
-                     pathway_data <- get(input$cancersea_pathway, envir = asNamespace("cancersea"))
-                     gene_list <- pathway_data$symbol
+                     
                      gene_list_filtered <- gene_list[gene_list %in% all_genes]
                      
                      if (length(gene_list_filtered) > 0) {
                        
-                       # ULTRA SIMPLE: Use the exact same parameters as your working old app
                        tryCatch({
-                         # Try with the old app's exact parameters first
+                         # Use the exact same parameters as your working old app
                          main_values$seurat_obj <- AddModuleScore(
                            object = temp_obj,
                            features = list(gene_list_filtered),
                            name = paste0(input$cancersea_pathway, "_"),
-                           ctrl = 20  # Same as old app
-                           # No nbin parameter = uses default (safer)
+                           ctrl = 20
                          )
                          
                          # Store the score column name
@@ -173,7 +198,7 @@ mod_cancersea_server <- function(id, seurat_obj, processed, main_values){
                          )
                          
                        }, error = function(e) {
-                         # If that still fails, try with absolute minimal parameters
+                         # Fallback approaches
                          if (grepl("Insufficient data", e$message) || grepl("bin", e$message)) {
                            
                            tryCatch({
@@ -182,8 +207,8 @@ mod_cancersea_server <- function(id, seurat_obj, processed, main_values){
                                object = temp_obj,
                                features = list(gene_list_filtered),
                                name = paste0(input$cancersea_pathway, "_"),
-                               ctrl = 5,     # Minimal control genes
-                               nbin = 5      # Minimal bins
+                               ctrl = 5,
+                               nbin = 5
                              )
                              
                              score_name <- paste0(input$cancersea_pathway, "_1")
@@ -196,33 +221,11 @@ mod_cancersea_server <- function(id, seurat_obj, processed, main_values){
                              )
                              
                            }, error = function(e2) {
-                             # If even that fails, try without any binning at all
-                             tryCatch({
-                               # LAST RESORT: Disable sophisticated control matching
-                               main_values$seurat_obj <- AddModuleScore(
-                                 object = temp_obj,
-                                 features = list(gene_list_filtered),
-                                 name = paste0(input$cancersea_pathway, "_"),
-                                 ctrl = 1,      # Just 1 control gene per feature
-                                 nbin = 1       # No binning
-                               )
-                               
-                               score_name <- paste0(input$cancersea_pathway, "_1")
-                               main_values$cancersea_scores[[input$cancersea_pathway]] <- score_name
-                               
-                               showNotification(
-                                 paste("Calculated", input$cancersea_pathway, "score with basic parameters (no control matching)"),
-                                 type = "warning",
-                                 duration = 7
-                               )
-                               
-                             }, error = function(e3) {
-                               showNotification(
-                                 paste("Failed to calculate", input$cancersea_pathway, "score:", e3$message),
-                                 type = "error",
-                                 duration = 10
-                               )
-                             })
+                             showNotification(
+                               paste("Failed to calculate", input$cancersea_pathway, "score:", e2$message),
+                               type = "error",
+                               duration = 10
+                             )
                            })
                            
                          } else {
@@ -277,7 +280,6 @@ mod_cancersea_server <- function(id, seurat_obj, processed, main_values){
         ggtitle(paste(input$cancersea_pathway, "Score by Cluster"))
     })
     
-    # Output: CancerSEA heatmap
     # Output: CancerSEA heatmap (fixed version)
     output$cancerseaHeatmap <- renderPlot({
       req(length(main_values$cancersea_scores) > 0)
@@ -311,7 +313,7 @@ mod_cancersea_server <- function(id, seurat_obj, processed, main_values){
         
         # Fixed color palette - use viridis to avoid RColorBrewer issues
         heatmap(score_matrix_scaled, 
-                col = viridis::viridis(100),  # Use viridis instead
+                col = viridis::viridis(100),
                 scale = "none",
                 margins = c(10, 8),
                 main = "CancerSEA Pathway Scores by Cluster")

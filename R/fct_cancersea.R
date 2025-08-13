@@ -63,13 +63,20 @@ calculate_multiple_pathways <- function(seurat_obj, pathways, ctrl = 20) {
 #' @return Vector of gene symbols
 #' @noRd
 get_pathway_genes <- function(pathway_name) {
+  if (!requireNamespace("cancersea", quietly = TRUE)) {
+    message("cancersea package required for pathway: ", pathway_name)
+    return(character())
+  }
+  
   tryCatch({
-    if (!requireNamespace("cancersea", quietly = TRUE)) {
-      message("cancersea package required")
-      return(character())
+    pathway_env <- asNamespace("cancersea")
+    if (exists(pathway_name, envir = pathway_env)) {
+      pathway_data <- get(pathway_name, envir = pathway_env)
+      if (is.list(pathway_data) && "symbol" %in% names(pathway_data)) {
+        return(pathway_data$symbol)
+      }
     }
-    pathway_data <- get(pathway_name, envir = asNamespace("cancersea"))
-    pathway_data$symbol
+    character()
   }, error = function(e) {
     message("Error getting genes for ", pathway_name, ": ", e$message)
     character()
