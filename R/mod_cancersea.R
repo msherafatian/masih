@@ -93,7 +93,6 @@ check_and_prepare_assay <- function(seurat_obj) {
 #' cancersea Server Functions
 #'
 #' @import Seurat
-#' @import cancersea
 #' @import viridis
 #' @noRd 
 mod_cancersea_server <- function(id, seurat_obj, processed, main_values){
@@ -102,9 +101,30 @@ mod_cancersea_server <- function(id, seurat_obj, processed, main_values){
     
     # Load CancerSEA pathways when module initializes
     observe({
-      data('available_pathways', package = 'cancersea')
-      updateSelectInput(session, "cancersea_pathway", 
-                        choices = available_pathways)
+      if (!requireNamespace("cancersea", quietly = TRUE)) {
+        showNotification("cancersea package required", type = "error")
+        return()
+      }
+      
+      tryCatch({
+        # Try to load available_pathways data
+        data('available_pathways', package = 'cancersea')
+        if (exists("available_pathways")) {
+          updateSelectInput(session, "cancersea_pathway", 
+                            choices = available_pathways)
+        } else {
+          # Fallback: use common pathway names
+          pathway_choices <- c(
+            "Angiogenesis", "Apoptosis", "Cell.Cycle", "Differentiation",
+            "DNA.Damage", "EMT", "Hypoxia", "Inflammation", "Invasion",
+            "Metastasis", "Proliferation", "Quiescence", "Stemness"
+          )
+          updateSelectInput(session, "cancersea_pathway", 
+                            choices = pathway_choices)
+        }
+      }, error = function(e) {
+        showNotification(paste("Error loading pathways:", e$message), type = "warning")
+      })
     })
     
     # Calculate CancerSEA pathway - UPDATED VERSION
@@ -120,7 +140,13 @@ mod_cancersea_server <- function(id, seurat_obj, processed, main_values){
                      temp_obj <- check_and_prepare_assay(seurat_obj())
                      
                      all_genes <- rownames(temp_obj)
-                     gene_list <- get(input$cancersea_pathway)$symbol
+                     #gene_list <- get(input$cancersea_pathway)$symbol
+                     if (!requireNamespace("cancersea", quietly = TRUE)) {
+                       showNotification("cancersea package required", type = "error")
+                       return()
+                     }
+                     pathway_data <- get(input$cancersea_pathway, envir = asNamespace("cancersea"))
+                     gene_list <- pathway_data$symbol
                      gene_list_filtered <- gene_list[gene_list %in% all_genes]
                      
                      if (length(gene_list_filtered) > 0) {

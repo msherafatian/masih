@@ -20,7 +20,12 @@ calculate_multiple_pathways <- function(seurat_obj, pathways, ctrl = 20) {
                                detail = paste("Processing", pathway))
                    
                    tryCatch({
-                     gene_list <- get(pathway)$symbol
+                     if (!requireNamespace("cancersea", quietly = TRUE)) {
+                       message("cancersea package required for pathway: ", pathway_name)
+                       return(character())
+                     }
+                     pathway_data <- get(pathway_name, envir = asNamespace("cancersea"))
+                     gene_list <- pathway_data$symbol
                      gene_list_filtered <- gene_list[gene_list %in% all_genes]
                      
                      if (length(gene_list_filtered) > 0) {
@@ -59,7 +64,12 @@ calculate_multiple_pathways <- function(seurat_obj, pathways, ctrl = 20) {
 #' @noRd
 get_pathway_genes <- function(pathway_name) {
   tryCatch({
-    get(pathway_name)$symbol
+    if (!requireNamespace("cancersea", quietly = TRUE)) {
+      message("cancersea package required")
+      return(character())
+    }
+    pathway_data <- get(pathway_name, envir = asNamespace("cancersea"))
+    pathway_data$symbol
   }, error = function(e) {
     message("Error getting genes for ", pathway_name, ": ", e$message)
     character()
