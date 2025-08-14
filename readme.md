@@ -1,10 +1,10 @@
-# MASIH: Modular Analysis Shiny Interface for Heterogeneity <img src="https://raw.githubusercontent.com/msherafatian/masih/main/man/figures/logo.PNG" align="right" width="120" />
+# MASIH: Modular Analysis using Shiny Interface for Heterogeneity in single cells<img src="https://raw.githubusercontent.com/msherafatian/masih/main/man/figures/logo.PNG" align="right" width="120" />
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![R](https://img.shields.io/badge/R-%3E=4.0-blue.svg)](https://cran.r-project.org/)
 [![GitHub issues](https://img.shields.io/github/issues/msherafatian/masih.svg)](https://github.com/msherafatian/masih/issues)
 
-**An interactive R Shiny application for comprehensive single-cell RNA sequencing analysis to focus on the multidimensional biological portrait of each cancer cell.**
+**An interactive R Shiny application for comprehensive single-cell RNA sequencing analysis to focus on the multidimensional biological portrait of each cell.**
 
 ---
 
