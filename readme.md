@@ -1,4 +1,4 @@
-# MASIH: Modular Analysis Shiny Interface for Heterogeneity <img src="man/figures/logo.png" align="right" width="120" />
+# MASIH: Modular Analysis Shiny Interface for Heterogeneity <img src="https://raw.githubusercontent.com/msherafatian/masih/main/man/figures/logo.png" align="right" width="120" />
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![R](https://img.shields.io/badge/R-%3E=4.0-blue.svg)](https://cran.r-project.org/)
