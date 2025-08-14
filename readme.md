@@ -1,14 +1,14 @@
-# MASIH: Modular Analysis Shiny Interface for Heterogeneity <img src="https://raw.githubusercontent.com/msherafatian/masih/main/man/figures/logo.png" align="right" width="120" />
+# MASIH: Modular Analysis Shiny Interface for Heterogeneity
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![R](https://img.shields.io/badge/R-%3E=4.0-blue.svg)](https://cran.r-project.org/)
-[![GitHub issues](https://img.shields.io/github/issues/yourusername/masih.svg)](https://github.com/yourusername/masih/issues)
+[![GitHub issues](https://img.shields.io/github/issues/msherafatian/masih.svg)](https://github.com/msherafatian/masih/issues)
 
 **An interactive R Shiny application for comprehensive single-cell RNA sequencing analysis to focus on the multidimensional biological portrait of each cancer cell.**
 
 ---
 
-## 📑 Table of Contents
+## 📋 Table of Contents
 
 - [Overview](#-overview)
 - [Key Features](#-key-features)
@@ -43,14 +43,14 @@ It offers a complete workflow from **raw and previously analysed single-cell gen
 - Automatically detects and completes missing analysis steps  
 
 ### 🔍 Cellular Landscape Mapping
-- **High-Resolution Clustering** – Graph-based clustering with statistical validation for resolving rare subpopulations  
-- **Dimensionality Reduction** – PCA, t-SNE, UMAP for revealing data structure  
-- **Marker Gene Profiling** – Differential expression analysis with integrated marker references  
+- **High-Resolution Clustering** — Graph-based clustering with statistical validation for resolving rare subpopulations  
+- **Dimensionality Reduction** — PCA, t-SNE, UMAP for revealing data structure  
+- **Marker Gene Profiling** — Differential expression analysis with integrated marker references  
 
 ### 🧠 Functional & Dynamic State Inference
-- **Functional State Characterization** – CancerSEA-based scoring of cancer-related pathways  
-- **Trajectory Mapping** – Pseudotime analysis to trace developmental or oncogenic progression  
-- **Cell Cycle Deconvolution** – Phase scoring and integration into downstream analyses  
+- **Functional State Characterization** — CancerSEA-based scoring of cancer-related pathways  
+- **Trajectory Mapping** — Pseudotime analysis to trace developmental or oncogenic progression  
+- **Cell Cycle Deconvolution** — Phase scoring and integration into downstream analyses  
 
 ### 📤 Insight Sharing & Reporting
 - Export publication-quality plots and structured analysis results  
@@ -74,7 +74,7 @@ It offers a complete workflow from **raw and previously analysed single-cell gen
 
 ```r
 # Install from GitHub
-devtools::install_github("yourusername/masih")
+devtools::install_github("msherafatian/masih")
 ```
 
 ### Launch MASIH
@@ -208,9 +208,9 @@ single-cell RNA sequencing analysis in cancer research. Bioinformatics,
 ## 📞 Support
 
 - **📖 Documentation**: Check our comprehensive guides
-- **🐛 Issues**: Report bugs on [GitHub Issues](https://github.com/yourusername/masih/issues)
+- **🐛 Issues**: Report bugs on [GitHub Issues](https://github.com/msherafatian/masih/issues)
 - **✉️ Email**: your.email@institution.edu
-- **💬 Discussions**: Join our [GitHub Discussions](https://github.com/yourusername/masih/discussions)
+- **💬 Discussions**: Join our [GitHub Discussions](https://github.com/msherafatian/masih/discussions)
 
 ---
 
@@ -250,4 +250,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **MASIH**: Making single-cell cancer analysis accessible to all researchers.
 
-[![Made with ❤️ for Cancer Research](https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20for-Cancer%20Research-red.svg)](https://github.com/yourusername/masih)
+[![Made with ❤️ for Cancer Research](https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20for-Cancer%20Research-red.svg)](https://github.com/msherafatian/masih)
