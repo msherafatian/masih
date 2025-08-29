@@ -157,6 +157,9 @@ mod_upload_ui <- function(id){
 mod_upload_server <- function(id, main_values){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
+    # Load cell cycle genes data at module initialization
+    data("cc.genes", package = "Seurat")
+    
     
     # Local reactive values for this module
     local_values <- reactiveValues(
