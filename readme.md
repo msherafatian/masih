@@ -74,12 +74,14 @@ It offers a complete workflow from **raw and previously analysed single-cell gen
 
 ```r
 # Install from GitHub
+devtools::install_github("camlab-bioml/cancersea")
 devtools::install_github("msherafatian/masih")
 ```
 
 ### Launch MASIH
 
 ```r
+library(cancersea)
 library(masih)
 run_app()
 ```
