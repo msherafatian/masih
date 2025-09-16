@@ -99,6 +99,7 @@ Rprof.out
 # pkgdown site (if built locally)
 docs/
 _site/
+doc/
 
 # golem generated files
 dev/run_dev.R
@@ -106,7 +107,7 @@ dev/run_dev.R
 # App data (sensitive)
 app_data/
 logs/
-doc/
+
 
 # Backup files
 *~
