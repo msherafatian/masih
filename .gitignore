@@ -106,6 +106,7 @@ dev/run_dev.R
 # App data (sensitive)
 app_data/
 logs/
+doc/
 
 # Backup files
 *~
