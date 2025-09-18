@@ -10,7 +10,7 @@ Description: An interactive R Shiny application for comprehensive single-cell
     RNA sequencing analysis in cancer research. MASIH provides a user-friendly
     web interface for analyzing single-cell RNA sequencing data to focus on 
     the multidimensional biological portrait of each cancer cell.
-License: MIT + file LICENSE
+License: GPL (>= 3)
 URL: https://github.com/msherafatian/masih
 BugReports: https://github.com/msherafatian/masih/issues
 Encoding: UTF-8
