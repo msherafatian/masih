@@ -1,5 +1,5 @@
 Package: masih
-Title: Modular Analysis Shiny Interface for Heterogeneity
+Title: Modular Analysis using Shiny Interface for Heterogeneity
 Version: 0.1.0
 Authors@R: 
     person("Masih", "Sherafatian", 
