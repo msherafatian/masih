@@ -1,4 +1,4 @@
-# MASIH: Modular Analysis using Shiny Interface for Heterogeneity in single cells<img src="https://raw.githubusercontent.com/msherafatian/masih/main/man/figures/logo.PNG" align="right" width="120" />
+# MASIH: Modular Analysis Suite for Interactive Heterogeneity in single cells<img src="https://raw.githubusercontent.com/msherafatian/masih/main/man/figures/logo.PNG" align="right" width="120" />
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![R](https://img.shields.io/badge/R-%3E=4.0-blue.svg)](https://cran.r-project.org/)
@@ -6,6 +6,7 @@
 
 **An interactive R Shiny application for comprehensive single-cell RNA sequencing analysis to focus on the multidimensional biological portrait of each cell.**
 
+> 🐍 **Python version available!** Check out [MASIH-Python](https://github.com/msherafatian/masih-python) for a Dash/Scanpy implementation with Docker support.
 ---
 
 ## 📋 Table of Contents
@@ -22,6 +23,7 @@
 - [Contributing](#-contributing)
 - [Citation](#-citation)
 - [Roadmap](#-roadmap)
+- [Related Projects](#-related-projects)
 - [Acknowledgments](#-acknowledgments)
 - [License](#-license)
 
@@ -32,6 +34,8 @@
 MASIH provides a user-friendly web interface for analyzing single-cell RNA sequencing (scRNA-seq) data to focus on the **multidimensional biological portrait of each cancer cell**.  
 
 It offers a complete workflow from **raw and previously analysed single-cell gene expression** to **many cell biological insights**.
+
+> 💡 **Looking for Python?** A Python/Dash implementation is available at [MASIH-Python](https://github.com/msherafatian/masih-python), maintaining architectural parity with this R version.
 
 ---
 
@@ -65,6 +69,8 @@ It offers a complete workflow from **raw and previously analysed single-cell gen
 - **Comprehensive Workflow**: From raw data to publication-ready figures  
 - **Reproducible**: Exports parameters and generates methods text  
 - **Modular Design**: Easily extend with new analysis modules  
+- **🐍 Python Version**: Also available as [MASIH-Python](https://github.com/msherafatian/masih-python) for Python users
+
 
 ---
 
@@ -243,6 +249,16 @@ MASIH is built on the shoulders of giants:
 - **[Shiny](https://shiny.rstudio.com/)** - Web application framework
 
 ---
+
+## 🔗 Related Projects
+
+- **[MASIH-Python](https://github.com/msherafatian/masih-python)** — Python/Dash implementation with Scanpy backend and Docker support
+- **[Seurat](https://satijalab.org/seurat/)** — Single-cell analysis framework (R)
+- **[Scanpy](https://scanpy.readthedocs.io/)** — Single-cell analysis toolkit (Python)
+- **[CancerSEA](http://biocc.hrbmu.edu.cn/CancerSEA/)** — Cancer functional state database
+
+---
+
 
 ## 📜 License
 
