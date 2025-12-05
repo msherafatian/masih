@@ -1,9 +1,9 @@
 # MASIH: Modular Analysis Suite for Interactive Heterogeneity in single cells<img src="https://raw.githubusercontent.com/msherafatian/masih/main/man/figures/logo.PNG" align="right" width="120" />
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![DOI](https://zenodo.org/badge/1036947264.svg)](https://doi.org/10.5281/zenodo.17824082)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 [![R](https://img.shields.io/badge/R-%3E=4.0-blue.svg)](https://cran.r-project.org/)
 [![GitHub issues](https://img.shields.io/github/issues/msherafatian/masih.svg)](https://github.com/msherafatian/masih/issues)
-
 **An interactive R Shiny application for comprehensive single-cell RNA sequencing analysis to focus on the multidimensional biological portrait of each cell.**
 
 > 🐍 **Python version available!** Check out [MASIH-Python](https://github.com/msherafatian/masih-python) for a Dash/Scanpy implementation with Docker support.
@@ -203,13 +203,26 @@ We welcome contributions! Please read our [Contributing Guidelines](docs/develop
 
 ## 📄 Citation
 
-If you use MASIH in your research, please cite:
+If you use MASIH, please cite the Zenodo DOI:
 
-```
-[Your Name] et al. (2024). MASIH: A modular Shiny interface for comprehensive 
-single-cell RNA sequencing analysis in cancer research. Bioinformatics, 
-[volume(issue)], [pages].
-```
+[![DOI](https://zenodo.org/badge/1036947264.svg)](https://doi.org/10.5281/zenodo.17824082)
+
+**Concept DOI (latest release):**  
+https://doi.org/10.5281/zenodo.17824082
+
+**Version-specific DOI (for reproducibility, e.g., manuscript-linked release):**  
+v1.0.0 → https://doi.org/10.5281/zenodo.17824081
+
+### BibTeX
+```bibtex
+@software{masih_2024,
+  author       = {Sherafatian, Masih},
+  title        = {MASIH: Modular Analysis Suite for Interactive Heterogeneity in Single Cells},
+  year         = 2024,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.17824082},
+  url          = {https://doi.org/10.5281/zenodo.17824082}
+}
 
 ---
 
@@ -262,7 +275,7 @@ MASIH is built on the shoulders of giants:
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the GPL-3.0 license - see the [LICENSE](LICENSE) file for details.
 
 ---
 
