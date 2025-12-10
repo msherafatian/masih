@@ -226,16 +226,7 @@ v1.0.0 → https://doi.org/10.5281/zenodo.17824081
   url          = {https://doi.org/10.5281/zenodo.17824082}
 }
 ```
----
 
-## 📞 Support
-
-- **📖 Documentation**: Check our comprehensive guides
-- **🐛 Issues**: Report bugs on [GitHub Issues](https://github.com/msherafatian/masih/issues)
-- **✉️ Email**: your.email@institution.edu
-- **💬 Discussions**: Join our [GitHub Discussions](https://github.com/msherafatian/masih/discussions)
-
----
 
 ## 📈 Roadmap
 
@@ -277,10 +268,10 @@ MASIH is built on the shoulders of giants:
 
 ## 📜 License
 
-This project is licensed under the GPL-3.0 license - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the GPL-3.0 license.
 
 ---
 
-**MASIH**: Making single-cell cancer analysis accessible to all researchers.
+**MASIH**: Making single-cell cancer analysis accessible to more researchers.
 
 [![Made with ❤️ for Cancer Research](https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20for-Cancer%20Research-red.svg)](https://github.com/msherafatian/masih)
