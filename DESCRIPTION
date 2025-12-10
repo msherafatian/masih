@@ -12,7 +12,7 @@ Description: An interactive R Shiny application for comprehensive single-cell
     web interface for analyzing single-cell RNA sequencing data to focus on 
     the multidimensional biological portrait of each cancer cell.
 License: GPL (>= 3) + file LICENSE
-URL: https://github.com/msherafatian/masih
+URL: https://github.com/msherafatian/masih, https://msherafatian.github.io/masih
 BugReports: https://github.com/msherafatian/masih/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
