@@ -1,4 +1,5 @@
 Package: masih
+Type: Package
 Title: Modular Analysis using Shiny Interface for Heterogeneity
 Version: 0.1.0
 Authors@R: 
@@ -10,7 +11,7 @@ Description: An interactive R Shiny application for comprehensive single-cell
     RNA sequencing analysis in cancer research. MASIH provides a user-friendly
     web interface for analyzing single-cell RNA sequencing data to focus on 
     the multidimensional biological portrait of each cancer cell.
-License: GPL (>= 3)
+License: GPL (>= 3) + file LICENSE
 URL: https://github.com/msherafatian/masih
 BugReports: https://github.com/msherafatian/masih/issues
 Encoding: UTF-8
@@ -36,13 +37,14 @@ Imports:
     config (>= 0.3.1),
     Matrix,
     magrittr,
-    tidyr
+    tidyr,
+    cancersea
 Suggests:
     BiocManager,
     testthat (>= 3.0.0),
     rmarkdown,
     devtools,
     pkgdown
-LazyData: true
+Config/testthat/edition: 3
 SystemRequirements: 
     pandoc (>= 1.14) for vignettes

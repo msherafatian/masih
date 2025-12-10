@@ -74,7 +74,7 @@ mod_trajectory_ui <- function(id){
         
         fluidRow(
           column(12,
-                 p("💡 Tip: Leave start/end as 'Auto-detect' to let Slingshot determine the trajectory automatically. Select specific clusters to define the trajectory direction.", 
+                 p(" Tip: Leave start/end as 'Auto-detect' to let Slingshot determine the trajectory automatically. Select specific clusters to define the trajectory direction.", 
                    style = "font-size: 12px; color: #666; font-style: italic;")
           )
         ),

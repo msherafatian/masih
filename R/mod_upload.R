@@ -236,7 +236,7 @@ mod_upload_server <- function(id, main_values){
           min.features = input$min_features
         )
         
-        local_values$log_text <- paste0(local_values$log_text, "✓ Seurat object created successfully\n")
+        local_values$log_text <- paste0(local_values$log_text, " Seurat object created successfully\n")
         local_values$log_text <- paste0(local_values$log_text, "  - Cells: ", 
                                         ncol(main_values$seurat_obj), "\n")
         local_values$log_text <- paste0(local_values$log_text, "  - Genes: ", 
@@ -259,13 +259,13 @@ mod_upload_server <- function(id, main_values){
         )
         
         local_values$log_text <- paste0(local_values$log_text, 
-                                        "\n⚠ Cell Ranger data loaded. Full processing required.\n")
+                                        " Cell Ranger data loaded. Full processing required.\n")
         local_values$log_text <- paste0(local_values$log_text, 
                                         "Click 'Process Data' to run all analyses.\n")
         
       }, error = function(e) {
         local_values$log_text <- paste0(local_values$log_text, 
-                                        "✗ Error loading Cell Ranger data: ", e$message, "\n")
+                                        " Error loading Cell Ranger data: ", e$message, "\n")
       })
     })
     
@@ -280,7 +280,7 @@ mod_upload_server <- function(id, main_values){
       tryCatch({
         main_values$seurat_obj <- readRDS(input$file$datapath)
         local_values$log_text <- paste0(local_values$log_text, 
-                                        "✓ Seurat object loaded successfully\n")
+                                        " Seurat object loaded successfully\n")
         
         # Check existing analyses with error catching for each step
         local_values$log_text <- paste0(local_values$log_text, "\nChecking existing analyses:\n")
@@ -292,10 +292,10 @@ mod_upload_server <- function(id, main_values){
             sum(main_values$seurat_obj@assays$RNA@data) > 0
           
           if (local_values$existing_analyses$normalized) {
-            local_values$log_text <- paste0(local_values$log_text, "✓ Normalization found\n")
+            local_values$log_text <- paste0(local_values$log_text, " Normalization found\n")
           }
         }, error = function(e) {
-          local_values$log_text <- paste0(local_values$log_text, "✗ Error checking normalization: ", e$message, "\n")
+          local_values$log_text <- paste0(local_values$log_text, " Error checking normalization: ", e$message, "\n")
         })
         
         # Check for variable features
@@ -304,12 +304,12 @@ mod_upload_server <- function(id, main_values){
             length(VariableFeatures(main_values$seurat_obj)) > 0
           
           if (local_values$existing_analyses$variable_features) {
-            local_values$log_text <- paste0(local_values$log_text, "✓ Variable features found (", 
+            local_values$log_text <- paste0(local_values$log_text, " Variable features found (", 
                                             length(VariableFeatures(main_values$seurat_obj)), 
                                             " features)\n")
           }
         }, error = function(e) {
-          local_values$log_text <- paste0(local_values$log_text, "✗ Error checking variable features: ", e$message, "\n")
+          local_values$log_text <- paste0(local_values$log_text, " Error checking variable features: ", e$message, "\n")
         })
         
         # Check for scaling
@@ -319,10 +319,10 @@ mod_upload_server <- function(id, main_values){
             nrow(main_values$seurat_obj@assays$RNA@scale.data) > 0
           
           if (local_values$existing_analyses$scaled) {
-            local_values$log_text <- paste0(local_values$log_text, "✓ Scaled data found\n")
+            local_values$log_text <- paste0(local_values$log_text, " Scaled data found\n")
           }
         }, error = function(e) {
-          local_values$log_text <- paste0(local_values$log_text, "✗ Error checking scaled data: ", e$message, "\n")
+          local_values$log_text <- paste0(local_values$log_text, " Error checking scaled data: ", e$message, "\n")
         })
         
         # Check for SCT
@@ -339,19 +339,19 @@ mod_upload_server <- function(id, main_values){
         tryCatch({
           local_values$existing_analyses$pca <- "pca" %in% names(main_values$seurat_obj@reductions)
           if (local_values$existing_analyses$pca) {
-            local_values$log_text <- paste0(local_values$log_text, "✓ PCA found\n")
+            local_values$log_text <- paste0(local_values$log_text, " PCA found\n")
           }
         }, error = function(e) {
-          local_values$log_text <- paste0(local_values$log_text, "✗ Error checking PCA: ", e$message, "\n")
+          local_values$log_text <- paste0(local_values$log_text, " Error checking PCA: ", e$message, "\n")
         })
         
         tryCatch({
           local_values$existing_analyses$umap <- "umap" %in% names(main_values$seurat_obj@reductions)
           if (local_values$existing_analyses$umap) {
-            local_values$log_text <- paste0(local_values$log_text, "✓ UMAP found\n")
+            local_values$log_text <- paste0(local_values$log_text, " UMAP found\n")
           }
         }, error = function(e) {
-          local_values$log_text <- paste0(local_values$log_text, "✗ Error checking UMAP: ", e$message, "\n")
+          local_values$log_text <- paste0(local_values$log_text, " Error checking UMAP: ", e$message, "\n")
         })
         
         tryCatch({
@@ -374,7 +374,7 @@ mod_upload_server <- function(id, main_values){
                                             length(unique(Idents(main_values$seurat_obj))), " clusters)\n")
           }
         }, error = function(e) {
-          local_values$log_text <- paste0(local_values$log_text, "✗ Error checking clustering: ", e$message, "\n")
+          local_values$log_text <- paste0(local_values$log_text, " Error checking clustering: ", e$message, "\n")
         })
         
         # Check for cell cycle scores
@@ -384,10 +384,10 @@ mod_upload_server <- function(id, main_values){
             all(c("S.Score", "G2M.Score", "Phase") %in% meta_names)
           
           if (local_values$existing_analyses$cell_cycle) {
-            local_values$log_text <- paste0(local_values$log_text, "✓ Cell cycle scores found\n")
+            local_values$log_text <- paste0(local_values$log_text, " Cell cycle scores found\n")
           }
         }, error = function(e) {
-          local_values$log_text <- paste0(local_values$log_text, "✗ Error checking cell cycle: ", e$message, "\n")
+          local_values$log_text <- paste0(local_values$log_text, " Error checking cell cycle: ", e$message, "\n")
         })
         
         # Check if fully processed
@@ -395,10 +395,10 @@ mod_upload_server <- function(id, main_values){
                                                         "clusters", "cell_cycle")]))) {
           main_values$processed <- TRUE
           local_values$log_text <- paste0(local_values$log_text, 
-                                          "\n✓ Object appears to be fully processed!\n")
+                                          "\n Object appears to be fully processed!\n")
         } else {
           local_values$log_text <- paste0(local_values$log_text, 
-                                          "\n⚠ Some analyses are missing. Click 'Process Data' to run missing steps.\n")
+                                          "\n Some analyses are missing. Click 'Process Data' to run missing steps.\n")
         }
         
       }, error = function(e) {
@@ -433,7 +433,7 @@ mod_upload_server <- function(id, main_values){
             cells_after <- ncol(main_values$seurat_obj)
             
             local_values$log_text <- paste0(local_values$log_text, 
-                                            "✓ QC complete. Cells: ", cells_before, " → ", cells_after, 
+                                            " QC complete. Cells: ", cells_before, " → ", cells_after, 
                                             " (removed ", cells_before - cells_after, ")\n")
           } else {
             incProgress(1/total_steps, detail = "Skipping QC...")
@@ -444,9 +444,9 @@ mod_upload_server <- function(id, main_values){
             incProgress(1/total_steps, detail = "Normalizing data...")
             local_values$log_text <- paste0(local_values$log_text, "Normalizing data...\n")
             main_values$seurat_obj <- NormalizeData(main_values$seurat_obj)
-            local_values$log_text <- paste0(local_values$log_text, "✓ Normalization complete\n")
+            local_values$log_text <- paste0(local_values$log_text, " Normalization complete\n")
           } else {
-            local_values$log_text <- paste0(local_values$log_text, "→ Skipping normalization (already done)\n")
+            local_values$log_text <- paste0(local_values$log_text, " Skipping normalization (already done)\n")
             incProgress(1/total_steps, detail = "Skipping normalization...")
           }
           
@@ -457,9 +457,9 @@ mod_upload_server <- function(id, main_values){
             main_values$seurat_obj <- FindVariableFeatures(main_values$seurat_obj, 
                                                            selection.method = "vst", 
                                                            nfeatures = input$nfeatures)
-            local_values$log_text <- paste0(local_values$log_text, "✓ Variable features identified\n")
+            local_values$log_text <- paste0(local_values$log_text, " Variable features identified\n")
           } else {
-            local_values$log_text <- paste0(local_values$log_text, "→ Skipping variable features (already done)\n")
+            local_values$log_text <- paste0(local_values$log_text, " Skipping variable features (already done)\n")
             incProgress(1/total_steps, detail = "Skipping variable features...")
           }
           
@@ -469,9 +469,9 @@ mod_upload_server <- function(id, main_values){
             local_values$log_text <- paste0(local_values$log_text, "Scaling data...\n")
             all.genes <- rownames(main_values$seurat_obj)
             main_values$seurat_obj <- ScaleData(main_values$seurat_obj, features = all.genes)
-            local_values$log_text <- paste0(local_values$log_text, "✓ Scaling complete\n")
+            local_values$log_text <- paste0(local_values$log_text, " Scaling complete\n")
           } else {
-            local_values$log_text <- paste0(local_values$log_text, "→ Skipping scaling (already done)\n")
+            local_values$log_text <- paste0(local_values$log_text, " Skipping scaling (already done)\n")
             incProgress(1/total_steps, detail = "Skipping scaling...")
           }
           
@@ -480,9 +480,9 @@ mod_upload_server <- function(id, main_values){
             incProgress(1/total_steps, detail = "Running PCA...")
             local_values$log_text <- paste0(local_values$log_text, "Running PCA...\n")
             main_values$seurat_obj <- RunPCA(main_values$seurat_obj)
-            local_values$log_text <- paste0(local_values$log_text, "✓ PCA complete\n")
+            local_values$log_text <- paste0(local_values$log_text, " PCA complete\n")
           } else {
-            local_values$log_text <- paste0(local_values$log_text, "→ Skipping PCA (already done)\n")
+            local_values$log_text <- paste0(local_values$log_text, " Skipping PCA (already done)\n")
             incProgress(1/total_steps, detail = "Skipping PCA...")
           }
           
@@ -491,9 +491,9 @@ mod_upload_server <- function(id, main_values){
             incProgress(1/total_steps, detail = "Running UMAP...")
             local_values$log_text <- paste0(local_values$log_text, "Running UMAP...\n")
             main_values$seurat_obj <- RunUMAP(main_values$seurat_obj, dims = 1:input$dims)
-            local_values$log_text <- paste0(local_values$log_text, "✓ UMAP complete\n")
+            local_values$log_text <- paste0(local_values$log_text, " UMAP complete\n")
           } else {
-            local_values$log_text <- paste0(local_values$log_text, "→ Skipping UMAP (already done)\n")
+            local_values$log_text <- paste0(local_values$log_text, " Skipping UMAP (already done)\n")
             incProgress(1/total_steps, detail = "Skipping UMAP...")
           }
           
@@ -502,9 +502,9 @@ mod_upload_server <- function(id, main_values){
             incProgress(1/total_steps, detail = "Running t-SNE...")
             local_values$log_text <- paste0(local_values$log_text, "Running t-SNE...\n")
             main_values$seurat_obj <- RunTSNE(main_values$seurat_obj, dims = 1:input$dims, check_duplicates = FALSE)
-            local_values$log_text <- paste0(local_values$log_text, "✓ t-SNE complete\n")
+            local_values$log_text <- paste0(local_values$log_text, " t-SNE complete\n")
           } else {
-            local_values$log_text <- paste0(local_values$log_text, "→ Skipping t-SNE (already done)\n")
+            local_values$log_text <- paste0(local_values$log_text, " Skipping t-SNE (already done)\n")
             incProgress(1/total_steps, detail = "Skipping t-SNE...")
           }
           
@@ -514,15 +514,15 @@ mod_upload_server <- function(id, main_values){
             local_values$log_text <- paste0(local_values$log_text, "Finding neighbors...\n")
             main_values$seurat_obj <- FindNeighbors(main_values$seurat_obj, dims = 1:input$dims)
             main_values$seurat_obj <- FindClusters(main_values$seurat_obj, resolution = input$resolution)
-            local_values$log_text <- paste0(local_values$log_text, "✓ Clustering complete\n")
+            local_values$log_text <- paste0(local_values$log_text, " Clustering complete\n")
           } else {
-            local_values$log_text <- paste0(local_values$log_text, "→ Skipping clustering (already done)\n")
+            local_values$log_text <- paste0(local_values$log_text, " Skipping clustering (already done)\n")
             incProgress(1/total_steps, detail = "Checking clustering...")
             # Option to recluster with different resolution
             if (input$recluster) {
               local_values$log_text <- paste0(local_values$log_text, "Re-clustering with resolution ", input$resolution, "...\n")
               main_values$seurat_obj <- FindClusters(main_values$seurat_obj, resolution = input$resolution)
-              local_values$log_text <- paste0(local_values$log_text, "✓ Re-clustering complete\n")
+              local_values$log_text <- paste0(local_values$log_text, " Re-clustering complete\n")
             }
           }
           
@@ -542,12 +542,12 @@ mod_upload_server <- function(id, main_values){
               vst.flavor = "v2",     # Use improved version
               conserve.memory = TRUE # Reduce memory usage
             )
-            local_values$log_text <- paste0(local_values$log_text, "✓ SCTransform complete\n")
+            local_values$log_text <- paste0(local_values$log_text, " SCTransform complete\n")
           } else if (local_values$existing_analyses$sct) {
-            local_values$log_text <- paste0(local_values$log_text, "→ Skipping SCTransform (already done)\n")
+            local_values$log_text <- paste0(local_values$log_text, " Skipping SCTransform (already done)\n")
             incProgress(1/total_steps, detail = "Skipping SCTransform...")
           } else {
-            local_values$log_text <- paste0(local_values$log_text, "→ Skipping SCTransform (not requested)\n")
+            local_values$log_text <- paste0(local_values$log_text, " Skipping SCTransform (not requested)\n")
             incProgress(1/total_steps, detail = "Skipping SCTransform...")
           }
           
@@ -561,9 +561,9 @@ mod_upload_server <- function(id, main_values){
                                                        s.features = s.genes, 
                                                        g2m.features = g2m.genes, 
                                                        set.ident = FALSE)
-            local_values$log_text <- paste0(local_values$log_text, "✓ Cell cycle scoring complete\n")
+            local_values$log_text <- paste0(local_values$log_text, " Cell cycle scoring complete\n")
           } else {
-            local_values$log_text <- paste0(local_values$log_text, "→ Skipping cell cycle scoring (already done)\n")
+            local_values$log_text <- paste0(local_values$log_text, " Skipping cell cycle scoring (already done)\n")
             incProgress(1/total_steps, detail = "Skipping cell cycle...")
           }
           
@@ -574,16 +574,16 @@ mod_upload_server <- function(id, main_values){
                                                      dims = 1:input$dims,
                                                      reorder = TRUE,
                                                      reorder.numeric = TRUE)
-          local_values$log_text <- paste0(local_values$log_text, "✓ Cluster tree built\n")
+          local_values$log_text <- paste0(local_values$log_text, " Cluster tree built\n")
           
           # Final completion
           main_values$processed <- TRUE
           local_values$is_cellranger <- FALSE  # Reset flag after processing
-          local_values$log_text <- paste0(local_values$log_text, "\n✓ All processing complete!\n")
+          local_values$log_text <- paste0(local_values$log_text, "\n All processing complete!\n")
           
         }, error = function(e) {
           local_values$log_text <- paste0(local_values$log_text, 
-                                          "\n✗ Error during processing: ", e$message, "\n")
+                                          "\n Error during processing: ", e$message, "\n")
         })
       })
     })

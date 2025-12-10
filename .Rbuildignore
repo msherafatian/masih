@@ -6,3 +6,6 @@ dev_history.R
 $run_dev.*
 ^.here$
 ^LICENSE\.md$
+^install\.R$
+^\.github$
+CITATION.cff
