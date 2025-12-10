@@ -45,6 +45,8 @@ Suggests:
     rmarkdown,
     devtools,
     pkgdown
+Remotes:
+    camlab-bioml/cancersea
 Config/testthat/edition: 3
 SystemRequirements: 
     pandoc (>= 1.14) for vignettes
