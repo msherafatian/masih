@@ -450,7 +450,7 @@ generate_methods_text <- function(main_values) {
   obj <- main_values$seurat_obj
   
   methods <- paste0(
-    "Single-cell RNA sequencing data was analyzed using the MASIH pipeline ",
+    "Single-cell RNA sequencing data was analyzed using the SHIMA pipeline ",
     "(Modular Analysis of Single-cell Insights and Heterogeneity), ",
     "built on Seurat v4 (Hao et al., 2021). ",
     "Data comprised ", ncol(obj), " cells and ", nrow(obj), " genes. ",
@@ -492,7 +492,7 @@ generate_methods_text <- function(main_values) {
   }
   
   methods <- paste0(methods,
-                    "All visualizations and analyses were performed using the MASIH application."
+                    "All visualizations and analyses were performed using the SHIMA application."
   )
   
   return(methods)
@@ -504,7 +504,7 @@ generate_methods_text <- function(main_values) {
 #' @noRd
 generate_citations <- function() {
   citations <- paste0(
-    "MASIH Pipeline:\n",
+    "SHIMA Pipeline:\n",
     "Custom pipeline for comprehensive single-cell analysis ",
     "(manuscript in preparation).\n\n",
     
@@ -548,7 +548,7 @@ generate_figure_legend <- function(seurat_obj) {
     " distinct populations. ",
     "Color scale represents [description of what colors mean]. ",
     "Each point represents an individual cell. ",
-    "Data was processed using MASIH pipeline with log-normalization ",
+    "Data was processed using SHIMA pipeline with log-normalization ",
     "and the first [N] principal components were used for ",
     "dimensionality reduction."
   )
@@ -563,7 +563,7 @@ generate_figure_legend <- function(seurat_obj) {
 print_analysis_summary <- function(main_values) {
   obj <- main_values$seurat_obj
   
-  cat("=== MASIH Analysis Summary ===\n\n")
+  cat("=== SHIMA Analysis Summary ===\n\n")
   cat("Date:", Sys.Date(), "\n")
   cat("Total cells analyzed:", ncol(obj), "\n")
   cat("Total genes detected:", nrow(obj), "\n")

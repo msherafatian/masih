@@ -5,7 +5,7 @@
 #'
 #' @noRd
 app_sys <- function(...) {
-  system.file(..., package = "masih")
+  system.file(..., package = "shima")
 }
 
 #' Read App Config

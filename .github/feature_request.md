@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest an idea for MASIH
+about: Suggest an idea for SHIMA
 title: "[FEATURE] "
 labels: enhancement
 assignees: ''

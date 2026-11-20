@@ -13,7 +13,7 @@ app_ui <- function(request) {
     
     # Your application UI logic
     shinydashboard::dashboardPage(
-      shinydashboard::dashboardHeader(title = "MASIH"),
+      shinydashboard::dashboardHeader(title = "SHIMA"),
       
       shinydashboard::dashboardSidebar(
         shinydashboard::sidebarMenu(
@@ -104,7 +104,7 @@ golem_add_external_resources <- function() {
     favicon(),
     bundle_resources(
       path = app_sys("app/www"),
-      app_title = "MASIH"
+      app_title = "SHIMA"
     ),
     # Add here other external resources
     # Include JavaScript for clipboard functionality

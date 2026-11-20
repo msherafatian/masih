@@ -1,4 +1,7 @@
-# masih 0.1.0
+# shima 0.1.0
+
+* Package identifier and application branding renamed from MASIH to SHIMA.
+* Existing `run_app()` interface preserved.
 
 ## New Features
 
