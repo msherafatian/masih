@@ -205,18 +205,30 @@ We welcome contributions! Please read our [Contributing Guidelines](docs/develop
 
 ## 📄 Citation
 
-If you use SHIMA, please cite the project's Zenodo DOI. The citation below also preserves the historical MASIH 1.0.0 record:
+SHIMA is a continuation of MASIH under the new R package name `shima`. Please cite SHIMA for work
+that uses the continued package. Preserve the historical MASIH citation when citing or reproducing
+the original MASIH 1.0.0 release.
 
 [![DOI](https://zenodo.org/badge/1036947264.svg)](https://doi.org/10.5281/zenodo.17824082)
 
-**Concept DOI (latest release):**  
+**SHIMA/MASIH continuing concept DOI:**
 https://doi.org/10.5281/zenodo.17824082
 
-**Version-specific DOI (for reproducibility, e.g., manuscript-linked release):**  
-v1.0.0 → https://doi.org/10.5281/zenodo.17824081
+**Historical MASIH version-specific DOI:**
+MASIH v1.0.0 → https://doi.org/10.5281/zenodo.17824081
 
 ### BibTeX
 ```bibtex
+@software{shima,
+  author       = {Sherafatian, Masih},
+  title        = {SHIMA: Modular Analysis Suite for Interactive Heterogeneity in Single Cells},
+  note         = {Continuation of MASIH},
+  version      = {0.1.0},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.17824082},
+  url          = {https://github.com/msherafatian/masih}
+}
+
 @software{masih_2024,
   author       = {Sherafatian, Masih},
   title        = {MASIH: Modular Analysis Suite for Interactive Heterogeneity in Single Cells},

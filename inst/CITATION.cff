@@ -11,7 +11,7 @@ url: "https://doi.org/10.5281/zenodo.17824082"
 authors:
   - family-names: Sherafatian
     given-names: Masih
-    orcid: "https://orcid.org/0000-0002-2814-6036"
+    orcid: "https://orcid.org/0000-0002-1101-1966"
 
 abstract: >
   MASIH is an interactive R Shiny suite for comprehensive single-cell RNA

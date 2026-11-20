@@ -1,0 +1,11 @@
+shima_citation <- bibentry(
+  bibtype = "Misc",
+  title = "SHIMA: Modular Analysis Suite for Interactive Heterogeneity in Single Cells",
+  author = person("Masih", "Sherafatian",
+                  email = "masih@alumni.unimelb.edu.au",
+                  comment = c(ORCID = "0000-0002-1101-1966")),
+  version = "0.1.0",
+  note = "Continuation of the MASIH R package",
+  doi = "10.5281/zenodo.17824082",
+  url = "https://github.com/msherafatian/masih"
+)
