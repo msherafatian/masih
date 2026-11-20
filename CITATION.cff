@@ -3,7 +3,10 @@ message: "If you use SHIMA in your work, please cite it using the metadata below
 title: "SHIMA: Single-cell Heterogeneity and Interactive Molecular Analysis"
 type: software
 version: "0.1.0"
+doi: 10.5281/zenodo.24390212
+date-released: 2026-11-20
 repository-code: "https://github.com/msherafatian/shima"
+url: "https://doi.org/10.5281/zenodo.24390212"
 
 authors:
   - family-names: Sherafatian

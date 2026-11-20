@@ -204,6 +204,8 @@ We welcome contributions! Please read our [Contributing Guidelines](docs/develop
 
 ## 📄 Citation
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24390212.svg)](https://doi.org/10.5281/zenodo.24390212)
+
 Please cite SHIMA using the package metadata in `CITATION.cff` or:
 
 ```bibtex
@@ -211,6 +213,7 @@ Please cite SHIMA using the package metadata in `CITATION.cff` or:
   author  = {Sherafatian, Masih},
   title   = {SHIMA: Single-cell Heterogeneity and Interactive Molecular Analysis},
   version = {0.1.0},
+  doi     = {10.5281/zenodo.24390212},
   url     = {https://github.com/msherafatian/shima}
 }
 ```
