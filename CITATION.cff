@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use SHIMA in your work, please cite it using the metadata below."
+title: "SHIMA: Single-cell Heterogeneity and Interactive Molecular Analysis"
+type: software
+version: "0.1.0"
+repository-code: "https://github.com/msherafatian/masih"
+
+authors:
+  - family-names: Sherafatian
+    given-names: Masih
+    orcid: "https://orcid.org/0000-0002-1101-1966"
+
+abstract: >
+  SHIMA (Single-cell Heterogeneity and Interactive Molecular Analysis) is an
+  independent R Shiny software package for comprehensive single-cell
+  RNA-sequencing analysis.
+
+keywords:
+  - single-cell RNA-seq
+  - cancer bioinformatics
+  - tumor heterogeneity
+  - trajectory inference
+  - CancerSEA
+  - pseudotime
+  - scRNA-seq
+  - Shiny
+  - SHIMA
+  - bioinformatics
+
+license: GPL-3.0

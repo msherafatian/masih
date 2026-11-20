@@ -1,0 +1,9 @@
+shima_citation <- bibentry(
+  bibtype = "Misc",
+  title = "SHIMA: Single-cell Heterogeneity and Interactive Molecular Analysis",
+  author = person("Masih", "Sherafatian",
+                  email = "masih@alumni.unimelb.edu.au",
+                  comment = c(ORCID = "0000-0002-1101-1966")),
+  version = "0.1.0",
+  url = "https://github.com/msherafatian/masih"
+)

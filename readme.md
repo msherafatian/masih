@@ -1,6 +1,5 @@
-# MASIH: Modular Analysis Suite for Interactive Heterogeneity in single cells<img src="https://raw.githubusercontent.com/msherafatian/masih/main/man/figures/logo.PNG" align="right" width="120" />
+# SHIMA: Single-cell Heterogeneity and Interactive Molecular Analysis<img src="https://raw.githubusercontent.com/msherafatian/masih/main/man/figures/logo.PNG" align="right" width="120" />
 
-[![DOI](https://zenodo.org/badge/1036947264.svg)](https://doi.org/10.5281/zenodo.17824082)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 [![R](https://img.shields.io/badge/R-%3E=4.0-blue.svg)](https://cran.r-project.org/)
 [![GitHub issues](https://img.shields.io/github/issues/msherafatian/masih.svg)](https://github.com/msherafatian/masih/issues)
@@ -15,7 +14,7 @@
 
 - [Overview](#-overview)
 - [Key Features](#-key-features)
-- [Why MASIH?](#-why-masih)
+- [Why SHIMA?](#-why-shima)
 - [Quick Start](#-quick-start)
 - [Documentation](#-documentation)
 - [Analysis Modules](#-analysis-modules)
@@ -33,7 +32,7 @@
 
 ## 📖 Overview
 
-MASIH provides a user-friendly web interface for analyzing single-cell RNA sequencing (scRNA-seq) data to focus on the **multidimensional biological portrait of each cancer cell**.  
+SHIMA provides a user-friendly web interface for analyzing single-cell RNA sequencing (scRNA-seq) data to focus on the **multidimensional biological portrait of each cancer cell**.
 
 It offers a complete workflow from **raw and previously analysed single-cell gene expression** to **many cell biological insights**.
 
@@ -64,7 +63,7 @@ It offers a complete workflow from **raw and previously analysed single-cell gen
 
 ---
 
-## 🎯 Why MASIH?
+## 🎯 Why SHIMA?
 
 - **Cancer-Focused**: Specialized cancer research tools with CancerSEA integration  
 - **No Coding Required**: Accessible to all researchers  
@@ -86,11 +85,11 @@ devtools::install_github("camlab-bioml/cancersea")
 devtools::install_github("msherafatian/masih")
 ```
 
-### Launch MASIH
+### Launch SHIMA
 
 ```r
 library(cancersea)
-library(masih)
+library(shima)
 run_app()
 ```
 
@@ -110,7 +109,7 @@ run_app(seurat_object = example_cancer_data)
 
 ### User Guides
 - **[Installation Guide](docs/user-guide/installation.md)** - Detailed installation instructions
-- **[Getting Started](docs/user-guide/getting-started.md)** - Your first analysis with MASIH
+- **[Getting Started](docs/user-guide/getting-started.md)** - Your first analysis with SHIMA
 - **[Data Preparation](docs/user-guide/data-preparation.md)** - How to prepare your data
 - **[Troubleshooting](docs/user-guide/troubleshooting.md)** - Common issues and solutions
 
@@ -171,7 +170,7 @@ run_app(seurat_object = example_cancer_data)
 
 ## 🏥 Use Cases
 
-MASIH is designed for cancer researchers studying:
+SHIMA is designed for cancer researchers studying:
 
 - **Tumor Heterogeneity**: Identify and characterize cancer cell subpopulations
 - **Treatment Response**: Analyze single-cell responses to therapy
@@ -205,25 +204,14 @@ We welcome contributions! Please read our [Contributing Guidelines](docs/develop
 
 ## 📄 Citation
 
-If you use MASIH, please cite the Zenodo DOI:
+Please cite SHIMA using the package metadata in `CITATION.cff` or:
 
-[![DOI](https://zenodo.org/badge/1036947264.svg)](https://doi.org/10.5281/zenodo.17824082)
-
-**Concept DOI (latest release):**  
-https://doi.org/10.5281/zenodo.17824082
-
-**Version-specific DOI (for reproducibility, e.g., manuscript-linked release):**  
-v1.0.0 → https://doi.org/10.5281/zenodo.17824081
-
-### BibTeX
 ```bibtex
-@software{masih_2024,
-  author       = {Sherafatian, Masih},
-  title        = {MASIH: Modular Analysis Suite for Interactive Heterogeneity in Single Cells},
-  year         = 2024,
-  publisher    = {Zenodo},
-  doi          = {10.5281/zenodo.17824082},
-  url          = {https://doi.org/10.5281/zenodo.17824082}
+@software{shima,
+  author  = {Sherafatian, Masih},
+  title   = {SHIMA: Single-cell Heterogeneity and Interactive Molecular Analysis},
+  version = {0.1.0},
+  url     = {https://github.com/msherafatian/masih}
 }
 ```
 
@@ -246,7 +234,7 @@ v1.0.0 → https://doi.org/10.5281/zenodo.17824081
 
 ## 🙏 Acknowledgments
 
-MASIH is built on the shoulders of giants:
+SHIMA is built on the shoulders of giants:
 
 - **[Seurat](https://satijalab.org/seurat/)** - Single-cell analysis framework
 - **[Slingshot](https://bioconductor.org/packages/slingshot/)** - Trajectory inference
@@ -272,6 +260,6 @@ This project is licensed under the GPL-3.0 license.
 
 ---
 
-**MASIH**: Making single-cell cancer analysis accessible to more researchers.
+**SHIMA**: Making single-cell cancer analysis accessible to more researchers.
 
 [![Made with ❤️ for Cancer Research](https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20for-Cancer%20Research-red.svg)](https://github.com/msherafatian/masih)

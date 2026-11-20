@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Create a report to help us improve MASIH
+about: Create a report to help us improve SHIMA
 title: "[BUG] "
 labels: bug
 assignees: ''
@@ -27,7 +27,7 @@ If applicable, add screenshots to help explain your problem.
  - OS: [e.g. Windows 10, macOS 11.0, Ubuntu 20.04]
  - Browser: [e.g. Chrome 96, Firefox 95, Safari 15]
  - R Version: [e.g. 4.1.0]
- - MASIH Version: [e.g. 0.1.0]
+ - SHIMA Version: [e.g. 0.1.0]
 
 **Data Information:**
  - Data type: [e.g. 10X Genomics, Seurat object, CSV matrix]

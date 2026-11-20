@@ -5,10 +5,10 @@ install.packages("golem")
 library(golem)
 
 # Create the golem project
-golem::create_golem(path = "/Users/user/Documents/scripts/R/Masih/", overwrite = TRUE)  # Using the name from your app
+golem::create_golem(path = "/Users/user/Documents/scripts/R/Shima/", overwrite = TRUE)  # Using the name from your app
 
 # Navigate to the project
-setwd("/Users/user/Documents/scripts/R/Masih/")
+setwd("/Users/user/Documents/scripts/R/Shima/")
 
 
 # Set up the basic golem infrastructure

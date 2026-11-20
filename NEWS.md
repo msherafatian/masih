@@ -1,8 +1,9 @@
-# masih 0.1.0
+# shima 0.1.0
+
+* Initial SHIMA release.
 
 ## New Features
 
-* Initial release of MASIH (Modular Analysis Shiny Interface for Heterogeneity)
 * Complete single-cell RNA sequencing analysis workflow
 * Interactive web interface built with Shiny and shinydashboard
 * Comprehensive quality control and filtering tools

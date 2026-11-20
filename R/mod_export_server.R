@@ -17,7 +17,7 @@ mod_export_server <- function(id, main_values){
     # Download single plot
     output$downloadPlot <- downloadHandler(
       filename = function() {
-        paste0("masih_plot_", Sys.Date(), ".", input$export_format)
+        paste0("shima_plot_", Sys.Date(), ".", input$export_format)
       },
       content = function(file) {
         req(main_values$seurat_obj)
@@ -78,14 +78,14 @@ mod_export_server <- function(id, main_values){
     # Download all plots
     output$downloadAllPlots <- downloadHandler(
       filename = function() {
-        paste0("masih_all_plots_", Sys.Date(), ".zip")
+        paste0("shima_all_plots_", Sys.Date(), ".zip")
       },
       content = function(file) {
         req(main_values$seurat_obj)
         
         # Create temporary directory
         temp_dir <- tempdir()
-        plots_dir <- file.path(temp_dir, "masih_plots")
+        plots_dir <- file.path(temp_dir, "shima_plots")
         dir.create(plots_dir, showWarnings = FALSE)
         
         withProgress(message = 'Generating plots...', value = 0, {
@@ -165,7 +165,7 @@ mod_export_server <- function(id, main_values){
     # Download data
     output$downloadData <- downloadHandler(
       filename = function() {
-        paste0("masih_data_", Sys.Date(), ".xlsx")
+        paste0("shima_data_", Sys.Date(), ".xlsx")
       },
       content = function(file) {
         req(main_values$seurat_obj)
@@ -247,7 +247,7 @@ mod_export_server <- function(id, main_values){
     # Download Seurat object
     output$downloadSeurat <- downloadHandler(
       filename = function() {
-        paste0("masih_seurat_object_", Sys.Date(), ".rds")
+        paste0("shima_seurat_object_", Sys.Date(), ".rds")
       },
       content = function(file) {
         req(main_values$seurat_obj)
