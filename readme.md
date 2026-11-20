@@ -1,6 +1,5 @@
-# SHIMA: Modular Analysis Suite for Interactive Heterogeneity in single cells<img src="https://raw.githubusercontent.com/msherafatian/masih/main/man/figures/logo.PNG" align="right" width="120" />
+# SHIMA: Single-cell Heterogeneity and Interactive Molecular Analysis<img src="https://raw.githubusercontent.com/msherafatian/masih/main/man/figures/logo.PNG" align="right" width="120" />
 
-[![DOI](https://zenodo.org/badge/1036947264.svg)](https://doi.org/10.5281/zenodo.17824082)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 [![R](https://img.shields.io/badge/R-%3E=4.0-blue.svg)](https://cran.r-project.org/)
 [![GitHub issues](https://img.shields.io/github/issues/msherafatian/masih.svg)](https://github.com/msherafatian/masih/issues)
@@ -205,37 +204,14 @@ We welcome contributions! Please read our [Contributing Guidelines](docs/develop
 
 ## 📄 Citation
 
-SHIMA is a continuation of MASIH under the new R package name `shima`. Please cite SHIMA for work
-that uses the continued package. Preserve the historical MASIH citation when citing or reproducing
-the original MASIH 1.0.0 release.
+Please cite SHIMA using the package metadata in `CITATION.cff` or:
 
-[![DOI](https://zenodo.org/badge/1036947264.svg)](https://doi.org/10.5281/zenodo.17824082)
-
-**SHIMA/MASIH continuing concept DOI:**
-https://doi.org/10.5281/zenodo.17824082
-
-**Historical MASIH version-specific DOI:**
-MASIH v1.0.0 → https://doi.org/10.5281/zenodo.17824081
-
-### BibTeX
 ```bibtex
 @software{shima,
-  author       = {Sherafatian, Masih},
-  title        = {SHIMA: Modular Analysis Suite for Interactive Heterogeneity in Single Cells},
-  note         = {Continuation of MASIH},
-  version      = {0.1.0},
-  publisher    = {Zenodo},
-  doi          = {10.5281/zenodo.17824082},
-  url          = {https://github.com/msherafatian/masih}
-}
-
-@software{masih_2024,
-  author       = {Sherafatian, Masih},
-  title        = {MASIH: Modular Analysis Suite for Interactive Heterogeneity in Single Cells},
-  year         = 2024,
-  publisher    = {Zenodo},
-  doi          = {10.5281/zenodo.17824082},
-  url          = {https://doi.org/10.5281/zenodo.17824082}
+  author  = {Sherafatian, Masih},
+  title   = {SHIMA: Single-cell Heterogeneity and Interactive Molecular Analysis},
+  version = {0.1.0},
+  url     = {https://github.com/msherafatian/masih}
 }
 ```
 

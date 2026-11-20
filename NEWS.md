@@ -1,11 +1,9 @@
 # shima 0.1.0
 
-* Package identifier and application branding renamed from MASIH to SHIMA.
-* Existing `run_app()` interface preserved.
+* Initial SHIMA release.
 
 ## New Features
 
-* Initial release of MASIH (Modular Analysis Shiny Interface for Heterogeneity)
 * Complete single-cell RNA sequencing analysis workflow
 * Interactive web interface built with Shiny and shinydashboard
 * Comprehensive quality control and filtering tools

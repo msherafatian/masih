@@ -451,7 +451,7 @@ generate_methods_text <- function(main_values) {
   
   methods <- paste0(
     "Single-cell RNA sequencing data was analyzed using the SHIMA pipeline ",
-    "(Modular Analysis of Single-cell Insights and Heterogeneity), ",
+    "(Single-cell Heterogeneity and Interactive Molecular Analysis), ",
     "built on Seurat v4 (Hao et al., 2021). ",
     "Data comprised ", ncol(obj), " cells and ", nrow(obj), " genes. ",
     "Cells were normalized using log-normalization and ", 

@@ -1,11 +1,9 @@
 cff-version: 1.2.0
 message: "If you use SHIMA in your work, please cite it using the metadata below."
-title: "SHIMA: Modular Analysis Suite for Interactive Heterogeneity in Single Cells"
+title: "SHIMA: Single-cell Heterogeneity and Interactive Molecular Analysis"
 type: software
 version: "0.1.0"
-doi: 10.5281/zenodo.17824082
 repository-code: "https://github.com/msherafatian/masih"
-url: "https://doi.org/10.5281/zenodo.17824082"
 
 authors:
   - family-names: Sherafatian
@@ -13,8 +11,9 @@ authors:
     orcid: "https://orcid.org/0000-0002-1101-1966"
 
 abstract: >
-  SHIMA is a continuation of the MASIH R Shiny package for comprehensive
-  single-cell RNA-sequencing analysis.
+  SHIMA (Single-cell Heterogeneity and Interactive Molecular Analysis) is an
+  independent R Shiny software package for comprehensive single-cell
+  RNA-sequencing analysis.
 
 keywords:
   - single-cell RNA-seq
@@ -26,17 +25,6 @@ keywords:
   - scRNA-seq
   - Shiny
   - SHIMA
-  - MASIH
   - bioinformatics
-
-references:
-  - type: software
-    title: "MASIH: Modular Analysis Suite for Interactive Heterogeneity in Single Cells"
-    authors:
-      - family-names: Sherafatian
-        given-names: Masih
-        orcid: "https://orcid.org/0000-0002-1101-1966"
-    version: "1.0.0"
-    doi: 10.5281/zenodo.17824081
 
 license: GPL-3.0

@@ -1,7 +1,7 @@
 url: https://msherafatian.github.io/masih/
 
 home:
-  title: "SHIMA: Modular Analysis Shiny Interface for Heterogeneity"
+  title: "SHIMA: Single-cell Heterogeneity and Interactive Molecular Analysis"
   description: >
     An interactive R Shiny application for comprehensive single-cell RNA 
     sequencing analysis in cancer research.
