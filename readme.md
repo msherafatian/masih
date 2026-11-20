@@ -1,8 +1,8 @@
-# SHIMA: Single-cell Heterogeneity and Interactive Molecular Analysis<img src="https://raw.githubusercontent.com/msherafatian/masih/main/man/figures/logo.PNG" align="right" width="120" />
+# SHIMA: Single-cell Heterogeneity and Interactive Molecular Analysis<img src="https://raw.githubusercontent.com/msherafatian/shima/main/man/figures/logo.PNG" align="right" width="120" />
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 [![R](https://img.shields.io/badge/R-%3E=4.0-blue.svg)](https://cran.r-project.org/)
-[![GitHub issues](https://img.shields.io/github/issues/msherafatian/masih.svg)](https://github.com/msherafatian/masih/issues)
+[![GitHub issues](https://img.shields.io/github/issues/msherafatian/shima.svg)](https://github.com/msherafatian/shima/issues)
 
 
 **An interactive R Shiny application for comprehensive single-cell RNA sequencing analysis to focus on the multidimensional biological portrait of each cell.**
@@ -82,7 +82,7 @@ It offers a complete workflow from **raw and previously analysed single-cell gen
 ```r
 # Install from GitHub
 devtools::install_github("camlab-bioml/cancersea")
-devtools::install_github("msherafatian/masih")
+devtools::install_github("msherafatian/shima")
 ```
 
 ### Launch SHIMA
@@ -211,7 +211,7 @@ Please cite SHIMA using the package metadata in `CITATION.cff` or:
   author  = {Sherafatian, Masih},
   title   = {SHIMA: Single-cell Heterogeneity and Interactive Molecular Analysis},
   version = {0.1.0},
-  url     = {https://github.com/msherafatian/masih}
+  url     = {https://github.com/msherafatian/shima}
 }
 ```
 
@@ -262,4 +262,4 @@ This project is licensed under the GPL-3.0 license.
 
 **SHIMA**: Making single-cell cancer analysis accessible to more researchers.
 
-[![Made with ❤️ for Cancer Research](https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20for-Cancer%20Research-red.svg)](https://github.com/msherafatian/masih)
+[![Made with ❤️ for Cancer Research](https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20for-Cancer%20Research-red.svg)](https://github.com/msherafatian/shima)

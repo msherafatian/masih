@@ -5,5 +5,5 @@ shima_citation <- bibentry(
                   email = "masih@alumni.unimelb.edu.au",
                   comment = c(ORCID = "0000-0002-1101-1966")),
   version = "0.1.0",
-  url = "https://github.com/msherafatian/masih"
+  url = "https://github.com/msherafatian/shima"
 )

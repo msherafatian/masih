@@ -11,8 +11,8 @@ Description: SHIMA (Single-cell Heterogeneity and Interactive Molecular Analysis
     is an interactive R Shiny application for comprehensive single-cell RNA
     sequencing analysis in cancer research.
 License: GPL (>= 3) + file LICENSE
-URL: https://github.com/msherafatian/masih, https://msherafatian.github.io/masih
-BugReports: https://github.com/msherafatian/masih/issues
+URL: https://github.com/msherafatian/shima, https://msherafatian.github.io/shima
+BugReports: https://github.com/msherafatian/shima/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
